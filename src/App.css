@@ -1,0 +1,9 @@
+ .game {
+  display: flex;
+  flex-direction: row;
+  /* row가 기본값이긴 함 */
+ }
+
+ .game-info{
+  margin-left: 20px ;
+ }
