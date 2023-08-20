@@ -46,7 +46,7 @@ const App = () => {
 
   const handleClick = (i) => {
       const newHistory = history.slice(0, stepNumber + 1); // 시점 이동 후, history 갱신
-      const newCurrent = history[newHistory.length - 1];
+      const newCurrent = newHistory[newHistory.length - 1];
 
       const newSquares = newCurrent.squares.slice();
 
@@ -74,7 +74,7 @@ const App = () => {
 
       return(
         <li key={move}>
-          <button onClick={() => jumpTo(move)}>{dest}</button>
+          <button className="move-button" onClick={() => jumpTo(move)}>{dest}</button>
         </li>
       )
    });
@@ -86,7 +86,7 @@ const App = () => {
       </div>
       <div className="game-info">
         <div className="status">{status}</div>
-        <ol>
+        <ol style={{listStyle: 'none'}}>
           {moves}
         </ol>
       </div>

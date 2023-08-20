@@ -15,7 +15,7 @@ const Board = ({squares, onClick}) => {
     }
 
     return (
-      <div>
+      <div className='board-wrapper'>
          <div className='board-row'>
             {/* <Square />
              이렇게 그냥 사용해도 됨 */}
