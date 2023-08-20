@@ -2,18 +2,12 @@ import React from "react";
 import "./Square.css";
 
 export default class Square extends React.Component{
-
-    constructor(props){
-        super(props);
-        this.state = {
-            valueM : null,
-        }
-    }
     
     render(){
         return(
-            <button className="square" onClick={() => {this.setState({valueM: 'X'})}}>
-                {this.state.valueM}
+            <button className="square" 
+                onClick={() => {this.props.onClick()}}>
+                {this.props.valueM}
             </button>
         )
     }

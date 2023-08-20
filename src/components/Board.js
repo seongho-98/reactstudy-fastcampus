@@ -6,8 +6,26 @@ import Square from './Square'
 import "./Board.css";
 
 export default class Board extends Component {
-    renderSquare(i){
-        return <Square valueM={i} />
+   constructor(props){
+      super(props);
+      this.state = {
+         squares: Array(9).fill(null)
+      }
+   } 
+
+   handleClick(i){
+      const squares = this.state.squares.slice(); //state에 있는 것 복사
+      squares[i] = 'X';
+
+      this.setState({
+         squares : squares
+      }); //squares 자체를 다시 끼움
+   }
+   
+   renderSquare(i){
+        return <Square valueM={this.state.squares[i]}
+                  onClick={() => this.handleClick(i)} />
+      // props로 함수까지 내려줄 수 있음
     }
 
   render() {
