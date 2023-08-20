@@ -6,6 +6,7 @@ const App = () => {
 
   const [history, setHistory] = useState([{squares: Array(9).fill(null)}]);
   const [xIsNext, setXIsNext] = useState(true);
+  const [stepNumber, setStepNumber] = useState(0); //현재 어떤 스탭인지 기록용
   
   const calculateWiner = (squares) => {
     const winList = [
@@ -31,7 +32,8 @@ const App = () => {
     return null;
  }
 
- const current = history[history.length - 1];
+ //const current = history[history.length - 1];
+ const current = history[stepNumber];
  const winner = calculateWiner(current.squares);
 
  let status = `Next Player ${xIsNext ? 'X' : 'O'}`;   
@@ -43,7 +45,10 @@ const App = () => {
    }
 
   const handleClick = (i) => {
-      const newSquares = current.squares.slice();
+      const newHistory = history.slice(0, stepNumber + 1); // 시점 이동 후, history 갱신
+      const newCurrent = history[newHistory.length - 1];
+
+      const newSquares = newCurrent.squares.slice();
 
       if(calculateWiner(newSquares) || newSquares[i]){
         return;
@@ -51,17 +56,25 @@ const App = () => {
 
       newSquares[i] = xIsNext? 'X' : 'O';
 
-      setHistory([...history, {squares : newSquares}]);
+      setHistory([...newHistory, {squares : newSquares}]);
       setXIsNext(prev => !prev);
+
+      setStepNumber(newHistory.length);
    }
 
+   const jumpTo = (step) => {
+      setStepNumber(step);
+      setXIsNext((step % 2) === 0);
+
+
+   }
    const moves = history.map((step, move) => {
       const dest = move ? 'GO TO move #' + move :
       'GO TO game start';
 
       return(
         <li key={move}>
-          <button>{dest}</button>
+          <button onClick={() => jumpTo(move)}>{dest}</button>
         </li>
       )
    });
