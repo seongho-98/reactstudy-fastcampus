@@ -50,10 +50,21 @@ const App = () => {
       }
 
       newSquares[i] = xIsNext? 'X' : 'O';
-      
+
       setHistory([...history, {squares : newSquares}]);
       setXIsNext(prev => !prev);
    }
+
+   const moves = history.map((step, move) => {
+      const dest = move ? 'GO TO move #' + move :
+      'GO TO game start';
+
+      return(
+        <li key={move}>
+          <button>{dest}</button>
+        </li>
+      )
+   });
 
   return (
     <div className="game">
@@ -62,6 +73,9 @@ const App = () => {
       </div>
       <div className="game-info">
         <div className="status">{status}</div>
+        <ol>
+          {moves}
+        </ol>
       </div>
     </div>
   );
