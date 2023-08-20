@@ -1,70 +1,40 @@
-# Getting Started with Create React App
+# 주제
+  <center><h4>리액트 학습을 위한 tic tac toe 게임입니다.</h4></center>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## UI
 
-## Available Scripts
+<img src="./gifs/tic-tac-toe.gif">
 
-In the project directory, you can run:
+## 학습 내용
+### 클래스형 컴포넌트 -> 함수형 컴포넌트
+- 함수형 컴포넌트
+    - 장점
+        - 코드 간결
+        - 성능이 클래스형 보다 더 빠름
+            - 클래스형은 this(인스턴스 메소드 생성 및 관리 필요)를 사용 => 메모리 사용이 더많아짐
+            - 함수형 : 코드 간결 => 컴파일 최적화 쉬움
+        - 라이프사이클을 useEffect에서 한번에 관리(with Hooks)
 
-### `npm start`
+<br>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### 컴포넌트 생성 및 데이터 전달
+- state
+    - 컴포넌트 내에서 뭔가를 기억해야 할 경우
+    - 동적인 변화 처리
+- props
+    - "부모 => 자식"에게 데이터 전달
+- 활용
+    - 부모 쪽에서 state 관리
+        - 자식들로 부터 데이터 모으기 용이함
+        - 두 자식간 통신 가능
+            props로 자식에게 state 전달만 해주면 됨
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+<br>
 
-### `npm test`
+### 동작에 대한 기록 저장
+- 게임 히스토리를 배열로 저장 => 특정 시점으로 돌아가는 이벤트를 발생시켜 과거로 이동
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<br>
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## 참고 강의
+<a href="https://fastcampus.co.kr/dev_online_frontend">패스트 캠퍼스 - 프론트엔드 웹 개발의 모든 것 초격차 패키지</a>
