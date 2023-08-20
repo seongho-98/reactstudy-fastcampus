@@ -7,29 +7,34 @@ import "./Board.css";
 
 const Board = () => {
    const [squares, setSquares] = useState(Array(9).fill(null))
+   const [xIsNext, setXIsNext] = useState(true);
 
-   const handleClick = (i) => { //함수형이라 이렇게 수정해줘야함
-      // const squares = this.state.squares.slice(); 
+   const status = `Next Player ${xIsNext ? 'X' : 'O'}`;
+
+   const handleClick = (i) => {
 
       const newSquares = squares.slice();//state에 있는 것 복사
       
-      newSquares[i] = 'X';
+      newSquares[i] = xIsNext ? 'X': 'O';
 
-      //this.setState({squares : squares});
       setSquares(newSquares); //squares 자체를 다시 끼움
+      
+      setXIsNext(!xIsNext)
+      //setXIsNext(previousStateMM => !previousStateMM);
+      //비슷하게 동작하지만.. 좀 다른 부분이 있음 -> 생략
+      
    }
    
    const renderSquare = (i) => {
-      //return <Square valueM={this.state.squares[i]} onClick={() => this.handleClick(i)} />
-      return <Square value={squares[i]}
-            onClick={() => this.handleClick(i)}/>
+      return <Square valueM={squares[i]}
+            onClick={() => handleClick(i)}/>
 
       // props로 함수까지 내려줄 수 있음
     }
 
     return (
       <div>
-         <div className='status'>Next Player: X, O</div>
+         <div className='status'>{status}</div>
          <div className='board-row'>
             {/* <Square />
              이렇게 그냥 사용해도 됨 */}

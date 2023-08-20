@@ -12,7 +12,8 @@ import "./Square.css";
 const Square = ({onClick, valueM}) =>{
     return(
         <button className="square" 
-            onClick={() => {onClick}}>
+            onClick={onClick}
+        >
             {valueM}
         </button>
     )
