@@ -9,12 +9,51 @@ const Board = () => {
    const [squares, setSquares] = useState(Array(9).fill(null))
    const [xIsNext, setXIsNext] = useState(true);
 
-   const status = `Next Player ${xIsNext ? 'X' : 'O'}`;
+   let status = `Next Player ${xIsNext ? 'X' : 'O'}`;   
+
+   const calculateWiner = (squares) => {
+      const winList = [
+         [0,1,2],
+         [3,4,5],
+         [6,7,8],
+         [0,3,6],
+         [1,4,7],
+         [2,5,8],
+         [0,4,8],
+         [2,4,6]
+      ]
+
+      for (let index = 0; index < winList.length; index++) {
+         const [a,b,c] = winList[index];
+
+         if(squares[a] && squares[a] === squares[b]
+             && squares[b] === squares[c])
+         {
+            return squares[a]; //승자 리턴
+         }
+      }      
+      return null;
+   }
+
+   const winner = calculateWiner(squares);
+
+   if(winner){
+      status = `Winner: ${winner}`;
+   }else{
+      status = `Next player: ${xIsNext ? 'X' : 'O'}`;
+   }
 
    const handleClick = (i) => {
 
       const newSquares = squares.slice();//state에 있는 것 복사
-      
+
+      console.log('newSquares', newSquares);
+      console.log('newSquares[i]', newSquares[i]);
+      //winner가 있거나, 클릭이 이미 되어있다면
+      if(calculateWiner(newSquares) || newSquares[i]){
+         return; //클릭이 안되도록
+      }
+
       newSquares[i] = xIsNext ? 'X': 'O';
 
       setSquares(newSquares); //squares 자체를 다시 끼움
